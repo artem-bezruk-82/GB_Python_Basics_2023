@@ -8,7 +8,7 @@ def get_console_input_int(requestText):
         try:
             return int(input(f"{requestText}: "))
         except ValueError:
-            print("You have entered not an integer value. Please try again: ")
+            print("You have entered not an integer value. Please try again.")
 
 
 main()
