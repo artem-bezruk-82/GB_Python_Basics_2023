@@ -6,19 +6,15 @@
 def main():
     factorials = list()
     valueInt = abs(get_console_input_int("Please enter integer value"))
-    iteration = 1
-    while iteration <= valueInt:
-        factorials.append(get_factorial(iteration))
-        iteration += 1
+    for i in range(1, valueInt + 1):
+        factorials.append(get_factorial(i))
     print(factorials)
 
 
 def get_factorial(valueInt):
     factorial = 1
-    iteration = 1
-    while iteration <= valueInt:
-        factorial *= iteration
-        iteration += 1
+    for i in range(1, valueInt + 1):
+        factorial *= i
     return factorial
 
 
