@@ -21,8 +21,8 @@ def main():
 
 def cyclic_shift_list(lst, shiftStepsInt):
     if shiftStepsInt < 0:
-        steps = abs(shiftStepsInt)
-        for i in range(steps):
+        shiftStepsInt = abs(shiftStepsInt)
+        for i in range(shiftStepsInt):
             lst.append(lst.pop(0))
     else:
         for i in range(shiftStepsInt):
