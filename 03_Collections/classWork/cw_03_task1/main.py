@@ -10,10 +10,10 @@ def main():
     junePrecipitation = [random.randint(0, 25) for index in range(0, 30)]
 
     print(junePrecipitation)
-    if junePrecipitation[:15] == junePrecipitation[15:]:
+    if sum(junePrecipitation[:15]) == sum(junePrecipitation[15:]):
         print("First and second half of June had tha same precipitation volume")
     else:
-        print("First half of June had " + ("more" if junePrecipitation[:15] > junePrecipitation[15:] else "less") +
+        print("First half of June had " + ("more" if sum(junePrecipitation[:15]) > sum(junePrecipitation[15:]) else "less") +
               " precipitation than second one")
 
 
