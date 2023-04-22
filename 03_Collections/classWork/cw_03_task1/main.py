@@ -7,9 +7,8 @@ import random
 
 
 def main():
-    junePrecipitation = list()
-    for i in range(0, 30):
-        junePrecipitation.append(random.randint(0, 25))
+    junePrecipitation = [random.randint(0, 25) for index in range(0, 30)]
+
     print(junePrecipitation)
     if junePrecipitation[:15] == junePrecipitation[15:]:
         print("First and second half of June had tha same precipitation volume")
