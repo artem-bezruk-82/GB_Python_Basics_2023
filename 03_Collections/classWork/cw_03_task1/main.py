@@ -7,13 +7,15 @@ import random
 
 
 def main():
-    junePrecipitation = [random.randint(0, 25) for index in range(0, 30)]
+    precipitation = [random.randint(0, 25) for index in range(0, 30)]
 
-    print(junePrecipitation)
-    if sum(junePrecipitation[:15]) == sum(junePrecipitation[15:]):
+    print(precipitation)
+    if sum(precipitation[:len(precipitation)//2]) == sum(precipitation[len(precipitation)//2:]):
         print("First and second half of June had tha same precipitation volume")
     else:
-        print("First half of June had " + ("more" if sum(junePrecipitation[:15]) > sum(junePrecipitation[15:]) else "less") +
+        print("First half of June had " +
+              ("more" if sum(precipitation[:len(precipitation)//2]) > sum(precipitation[len(precipitation)//2:]) else "less")
+              +
               " precipitation than second one")
 
 
