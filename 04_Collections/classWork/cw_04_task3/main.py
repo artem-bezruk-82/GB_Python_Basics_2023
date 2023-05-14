@@ -10,7 +10,7 @@ def main():
     numbersList = [random.randint(1, 20) for _ in range(0, 10)]
     print(numbersList)
     lenInit = len(numbersList)
-    numbersList = set(numbersList)
+    numbersList = list(set(numbersList))
     lenFinal = len(numbersList)
     print(numbersList)
     print(f"{lenInit - lenFinal} repetitive elements have been deleted")
