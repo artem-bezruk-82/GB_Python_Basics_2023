@@ -1,16 +1,43 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+# Семинар 4
+# Домашняя работа
+# Задание 1
+# Дано натуральное число N.
+# Напишите метод, который вернёт список простых множителей числа N и количество этих множителей.
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    value = get_console_input_int("Please enter integer value")
+    testTuple = get_factors_tuple(value)
+    factorsList = testTuple[0]
+    numberOfFactorsInt = testTuple[1]
+    if numberOfFactorsInt == 0:
+        print(f'{value} is simple value')
+    else:
+        print(f"{value} has {numberOfFactorsInt} factors, that are: {factorsList}")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+def get_factors_tuple(valueInteger):
+    if type(valueInteger) is not int:
+        raise Exception("Argument is not an integer type")
+    valueInt = abs(valueInteger)
+    factorInt = 2
+    factorsList = list()
+    while valueInt != 1 and factorInt <= valueInteger//2:
+        if valueInt % factorInt == 0:
+            factorsList.append(factorInt)
+            valueInt /= factorInt
+        else:
+            factorInt += 1
+    return factorsList, len(factorsList)
+
+
+def get_console_input_int(requestTextStr):
+    while True:
+        try:
+            return int(input(f'{requestTextStr}: '))
+        except ValueError:
+            print("You have entered not a =n integer value. Please try again.")
+
+
+main()
+
