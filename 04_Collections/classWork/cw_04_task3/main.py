@@ -11,9 +11,8 @@ def main():
     print(numbersList)
     lenInit = len(numbersList)
     numbersList = list(set(numbersList))
-    lenFinal = len(numbersList)
     print(numbersList)
-    print(f"{lenInit - lenFinal} repetitive elements have been deleted")
+    print(f"{lenInit - len(numbersList)} repetitive elements have been deleted")
 
 
 main()
