@@ -11,14 +11,20 @@ def main():
     answersDictionary = {
         "hi": "Hi, nice to see you!",
         "hello": "Hello, nice to see you!",
-        "what is your name?": "My name is Bob, and I'm a bot"
+        "what is your name?": "My name is Bob, and I'm a bot",
+        "bye": "Goodbye!",
+        "stop": "Goodbye!"
     }
 
-    phrase = str(input("Please enter your phrase: ")).lower()
-    try:
-        print(answersDictionary[phrase])
-    except:
-        print("Sorry, I do not know what you are talking about")
+    flag = True
+    while flag:
+        phrase = str(input("Please enter your phrase: ")).lower()
+        try:
+            print(answersDictionary[phrase])
+        except:
+            print("Sorry, I do not know what you are talking about")
+        if phrase == "bye" or phrase == "stop":
+            flag = False
 
 
 main()
