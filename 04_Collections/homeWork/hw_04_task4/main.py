@@ -18,8 +18,13 @@ def get_polynomial_split_lst(polynomialStr):
     polynomialStr = polynomialStr.replace(' ', '')
     polynomialStr = polynomialStr.replace('-', '+-')
     polynomialList = polynomialStr.split('+')
+    for i in range(0, len(polynomialList)):
+        if "x^" not in polynomialList[i]:
+            if "x" in polynomialList[i]:
+                polynomialList[i] = polynomialList[i].replace("x", "x^1")
+            else:
+                polynomialList[i] += "x^0"
     print(polynomialList)
-
 
     #polynomialMap = map(lambda string: int(string) if len(string) > 0 else 1, polynomialList)
     #return list(polynomialMap)
