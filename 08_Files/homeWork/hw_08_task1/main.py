@@ -1,16 +1,47 @@
-# This is a sample Python script.
+# Семинар 8
+# Домашняя работа
+# Задача 1
+# Напишите бота для техподдержки. Бот должен записывать обращения пользователей в файл.
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import telebot
+from telebot import types
+import json
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+bot = telebot.TeleBot("TOKEN", parse_mode=None)
+
+filePath = "requests.txt"
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    bot.polling(none_stop=True)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+@bot.message_handler(commands=["start"])
+def start(message):
+    if message.from_user.is_bot == False:
+        bot.send_message(message.chat.id, f"Hello, {message.from_user.first_name}!")
+        bot.send_message(message.chat.id, f"/request to raise your request")
+
+
+@bot.message_handler(content_types=["text"])
+def menu(message):
+    if message.text == "/request":
+        msg = bot.send_message(message.chat.id, "Please enter your request text")
+        bot.register_next_step_handler(msg, record_message_to_file)
+
+
+@bot.message_handler(content_types=["text"])
+def record_message_to_file(message):
+    requestDic = {
+        "request": message.json,
+        "response": ""
+    }
+    fileOutputStream = open(file=filePath, mode='a')
+    fileOutputStream.write(f"{json.dumps(requestDic)}\n")
+    fileOutputStream.close()
+    msg = bot.send_message(message.chat.id, "Thank your for your request. We will come back to you with solution soon!")
+    bot.register_next_step_handler(msg, start)
+
+
+main()
